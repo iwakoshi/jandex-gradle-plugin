@@ -474,7 +474,7 @@ class JandexPluginFunctionalTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"8.0.2", "8.6", "8.10.2", "8.14.1"})
+    @ValueSource(strings = {"8.5", "8.6", "8.10.2", "8.14.1"})
     void worksWithGradleVersion(String gradleVersion)
         throws IOException {
         setupBasicProject();
