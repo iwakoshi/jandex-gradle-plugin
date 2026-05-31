@@ -1,0 +1,13 @@
+[versions]
+jandex = "3.5.3"
+junit = "5.12.1"
+jacoco = "0.8.12"
+checkstyle = "9.3"
+plugin-publish = "2.1.1"
+
+[libraries]
+jandex = { module = "io.smallrye:jandex", version.ref = "jandex" }
+junit-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit" }
+
+[plugins]
+plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "plugin-publish" }

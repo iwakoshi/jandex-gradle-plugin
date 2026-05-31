@@ -1,0 +1,30 @@
+#!/bin/sh
+# Pre-push hook: runs checks before allowing tag pushes
+# Install: git config core.hooksPath .githooks
+
+# Check if we're pushing a tag
+if echo "$0" | grep -q "pre-push"; then
+    while read local_ref local_sha remote_ref remote_sha; do
+        if echo "$remote_ref" | grep -q "refs/tags/"; then
+            TAG=$(echo "$remote_ref" | sed 's|refs/tags/||')
+            echo "🏷️  Pushing tag: $TAG"
+            echo "🔍 Running checks before release..."
+
+            # Validate tag format
+            if ! echo "$TAG" | grep -qE '^v[0-9]+\.[0-9]+\.[0-9]+$'; then
+                echo "❌ Tag '$TAG' does not match format vX.Y.Z"
+                exit 1
+            fi
+
+            # Run full check
+            echo "⏳ Running ./gradlew check..."
+            if ! ./gradlew check --quiet; then
+                echo "❌ Checks failed. Fix issues before releasing."
+                exit 1
+            fi
+
+            echo "✅ All checks passed. Proceeding with release push."
+        fi
+    done
+fi
+

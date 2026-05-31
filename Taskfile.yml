@@ -1,0 +1,41 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: Adds asdf plugins, installs tools, and configures git hooks
+    cmds:
+      - asdf plugin add java || true
+      - asdf plugin add gradle || true
+      - asdf plugin add task || true
+      - asdf install
+      - git config core.hooksPath .githooks
+
+  update-java:
+    desc: Updates .tool-versions to the latest Java 8 Corretto version
+    cmds:
+      - |
+        LATEST=$(asdf latest java corretto-8)
+        sed -i '' "s/^java .*/java ${LATEST}/" .tool-versions
+        asdf install java ${LATEST}
+        echo "Updated to java ${LATEST}"
+
+  clean:
+    desc: Cleans the build directory
+    cmds:
+      - ./gradlew clean
+
+  build:
+    desc: Builds the project
+    cmds:
+      - ./gradlew build
+
+  test:
+    desc: Runs the test suite
+    cmds:
+      - ./gradlew test
+
+  publish-local:
+    desc: Publishes the plugin to the local Maven repository
+    aliases: [publishLocal, publishToMavenLocal]
+    cmds:
+      - ./gradlew publishToMavenLocal
