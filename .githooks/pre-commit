@@ -1,0 +1,15 @@
+#!/bin/sh
+# Pre-commit hook: checks if verification-metadata needs updating
+# Install: git config core.hooksPath .githooks
+
+# Check if dependency files changed but verification-metadata didn't
+DEPS_CHANGED=$(git diff --cached --name-only | grep -c "libs.versions.toml\|build.gradle.kts" || true)
+METADATA_CHANGED=$(git diff --cached --name-only | grep -c "verification-metadata.xml" || true)
+
+if [ "$DEPS_CHANGED" -gt 0 ] && [ "$METADATA_CHANGED" -eq 0 ]; then
+    echo "⚠️  Dependency files changed but verification-metadata.xml was not updated."
+    echo "   Run: task lock"
+    echo "   Then stage: git add gradle/verification-metadata.xml"
+    exit 1
+fi
+

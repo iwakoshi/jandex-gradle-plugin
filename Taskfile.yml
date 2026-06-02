@@ -19,6 +19,12 @@ tasks:
         asdf install java ${LATEST}
         echo "Updated to java ${LATEST}"
 
+  update-locks:
+    desc: Updates the verification-metadata.xml after dependency changes
+    aliases: [lock]
+    cmds:
+      - ./gradlew --write-verification-metadata sha256 help
+
   clean:
     desc: Cleans the build directory
     cmds:
