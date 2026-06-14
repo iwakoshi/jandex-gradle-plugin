@@ -1,5 +1,5 @@
 [versions]
-jandex = "3.5.3"
+jandex = "3.6.0"
 junit = "5.12.1"
 jacoco = "0.8.12"
 checkstyle = "9.3"
