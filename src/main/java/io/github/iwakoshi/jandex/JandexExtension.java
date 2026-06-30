@@ -7,7 +7,7 @@ import org.gradle.api.provider.Property;
  *
  * <pre>
  *  jandex {
- *      version = "3.5.3"
+ *      version = "3.6.0"
  *      processTestClasses = false
  *      indexVersion = 6
  *  }
@@ -17,7 +17,7 @@ public abstract class JandexExtension {
 
     /**
      * The version of {@code io.smallrye:jandex} to use for indexing.
-     * Default value is {@code 3.5.3}.
+     * Default value is {@code 3.6.0}.
      *
      * @return the jandex version property
      */
