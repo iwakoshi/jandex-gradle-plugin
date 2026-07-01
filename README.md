@@ -147,10 +147,10 @@ Use this if your runtime framework requires an older Jandex index format.
 
 ## Configuration Reference
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `version` | `String` | `3.5.3` | The `io.smallrye:jandex` library version |
-| `processTestClasses` | `Boolean` | `false` | Whether to also index test classes |
+| Property | Type | Default    | Description |
+|----------|------|------------|-------------|
+| `version` | `String` | `3.6.0`    | The `io.smallrye:jandex` library version |
+| `processTestClasses` | `Boolean` | `false`    | Whether to also index test classes |
 | `indexVersion` | `Integer` | _(latest)_ | Jandex index format version (>= 6) |
 
 ## Tasks

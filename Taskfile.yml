@@ -23,7 +23,7 @@ tasks:
     desc: Updates the verification-metadata.xml after dependency changes
     aliases: [lock]
     cmds:
-      - ./gradlew --write-verification-metadata sha256 help
+      - ./gradlew --refresh-dependencies --write-verification-metadata sha256 build functionalTest
 
   clean:
     desc: Cleans the build directory

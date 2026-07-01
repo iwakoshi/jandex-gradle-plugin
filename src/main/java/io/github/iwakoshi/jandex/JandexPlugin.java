@@ -29,7 +29,7 @@ import org.gradle.api.tasks.bundling.Jar;
  *
  * <p>The {@code io.smallrye:jandex} library version is configurable via the
  * {@link JandexExtension#getVersion()} property and defaults to
- * {@code 3.5.3}. The library is resolved into a detached configuration and
+ * {@code 3.6.0}. The library is resolved into a detached configuration and
  * loaded in an isolated classloader via the Gradle Worker API, keeping the
  * project's dependency graph clean.
  *
@@ -42,7 +42,7 @@ public class JandexPlugin implements Plugin<Project> {
     private static final String MAIN_TASK_NAME = "jandex";
     private static final String TEST_TASK_NAME = "jandexTest";
 
-    static final String DEFAULT_JANDEX_VERSION = "3.5.3";
+    static final String DEFAULT_JANDEX_VERSION = "3.6.0";
 
     private static final String JANDEX_CLASSPATH_CONFIG = "jandexClasspath";
     private static final String JANDEX_DEPENDENCY = "io.smallrye:jandex:";
